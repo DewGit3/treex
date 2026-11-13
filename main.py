@@ -32,7 +32,13 @@ if folder.is_dir():
             print(f"├── {item.name}/")
             
             for inner_item in sorted(item.iterdir()):
-                print(f"│   ├── {inner_item.name}/")
+                if inner_item.is_file():
+                    file_cout += 1
+                    print(f"│   ├── {inner_item.name}")
+                    
+                else:
+                    folder_cout += 1
+                    print(f"│   ├── {inner_item.name}/")
             
         else:
             file_cout += 1
